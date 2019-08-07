@@ -33,7 +33,7 @@
     </LinearLayout>
     <TextView
             android:layout_width="350dp"
-            android:layout_height="50dp" android:id="@+id/LastResult" android:layout_marginTop="20dp"
+            android:layout_height="50dp" android:id="@+id/TextViewBackResult" android:layout_marginTop="20dp"
             android:layout_marginBottom="20dp" android:gravity="center" android:layout_gravity="center"/>
     <Button
             android:text="Calculate"

@@ -5,8 +5,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import androidx.annotation.IntegerRes
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_set_result.*
 
 class SetResult : AppCompatActivity() {
@@ -15,29 +13,23 @@ class SetResult : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_set_result)
 
-        val changeNumber1 = intent.getIntExtra("ValueOfA", 0)
-        val changeOperation = intent.getStringExtra("ValueOfOperation")
-        val changeNumber2 = intent.getIntExtra("ValueOfB", 0)
-        val changeResult = intent.getIntExtra("ValueOfResult", 0)
+        val numberA = intent.getIntExtra("ValueOfA", 0)
+        val numberB = intent.getIntExtra("ValueOfB", 0)
 
-        val a = findViewById<TextView>(R.id.TextViewA)
-        val opera = findViewById<TextView>(R.id.TextViewOperation)
-        val b = findViewById<TextView>(R.id.TextViewB)
-        val result = findViewById<TextView>(R.id.TextViewResult)
+        val mTextViewA = findViewById<TextView>(R.id.TextViewA)
+        val mTextViewB = findViewById<TextView>(R.id.TextViewB)
 
-        a.text = changeNumber1.toString()
-        opera.text = changeOperation.toString()
-        b.text = changeNumber2.toString()
-        result.text = changeResult.toString()
+        mTextViewA.text = numberA.toString()
+        mTextViewB.text = numberB.toString()
 
         back.setOnClickListener {
-
-            val mBackResult = Integer.parseInt(result.text.toString())
+            val result = numberA + numberB
 
             val dataIntent = Intent(this, MainActivity::class.java)
-            dataIntent.putExtra("ValueOfBackResult", mBackResult)
+            dataIntent.putExtra("ValueOfResult", result)
             setResult(Activity.RESULT_OK, dataIntent)
             finish()
         }
+
     }
 }
