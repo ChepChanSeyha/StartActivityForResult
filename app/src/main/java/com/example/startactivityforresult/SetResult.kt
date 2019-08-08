@@ -4,10 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.AdapterView
-import android.widget.Spinner
 import android.widget.TextView
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_set_result.*
 
 class SetResult : AppCompatActivity() {
@@ -25,10 +22,6 @@ class SetResult : AppCompatActivity() {
         val mTextViewB = findViewById<TextView>(R.id.TextViewB)
         val mResult = findViewById<TextView>(R.id.TextViewResult)
 
-        mTextViewA.text = numberA.toString()
-        mOperation.text = operationVal
-        mTextViewB.text = numberB.toString()
-
         val mBackResult = when (operationVal) {
             "+" -> numberA + numberB
             "-" -> numberA - numberB
@@ -36,9 +29,12 @@ class SetResult : AppCompatActivity() {
             else -> numberA / numberB
         }
 
+        mTextViewA.text = numberA.toString()
+        mOperation.text = operationVal
+        mTextViewB.text = numberB.toString()
         mResult.text = mBackResult.toString()
 
-            back.setOnClickListener {
+        back.setOnClickListener {
 
             val dataIntent = Intent(this, MainActivity::class.java)
             dataIntent.putExtra("ValueOfResult", mBackResult)
